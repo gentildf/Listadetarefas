@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Configurar recycler
         recyclerView = findViewById(R.id.recyclerView);
-
+        //Eventos de clique
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
