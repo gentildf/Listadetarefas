@@ -1,8 +1,10 @@
-package com.dfgstudio.listadetarefas;
+package com.dfgstudio.listadetarefas.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.dfgstudio.listadetarefas.R;
 
 public class AdicionarTarefaMainActivity extends AppCompatActivity {
 
