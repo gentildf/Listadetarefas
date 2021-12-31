@@ -14,16 +14,21 @@ import android.view.View;
 
 import com.dfgstudio.listadetarefas.adapter.TarefaAdapter;
 import com.dfgstudio.listadetarefas.databinding.ActivityMainBinding;
+import com.dfgstudio.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private RecyclerView recyclerView;
     private TarefaAdapter tarefaAdapter;
+    private List<Tarefa> listaTarefas = new ArrayList<>();
 
 
     @Override
@@ -52,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaTarefas(){
 
         //Lista de tarefas
+        Tarefa tarefa1 = new Tarefa();
+        tarefa1.setNomeTarefa("Tarefa 1");
+        listaTarefas.add(tarefa1);
 
 
         // Configurar adapter
