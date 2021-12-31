@@ -61,9 +61,13 @@ public class MainActivity extends AppCompatActivity {
         tarefa1.setNomeTarefa("Tarefa 1");
         listaTarefas.add(tarefa1);
 
+        Tarefa tarefa2 = new Tarefa();
+        tarefa2.setNomeTarefa("Tarefa 2");
+        listaTarefas.add(tarefa2);
+
 
         // Configurar adapter
-        tarefaAdapter = new TarefaAdapter();
+        tarefaAdapter = new TarefaAdapter( listaTarefas );
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
