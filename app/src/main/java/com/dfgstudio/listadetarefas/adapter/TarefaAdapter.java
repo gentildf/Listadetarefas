@@ -29,7 +29,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
         return 0;
     }
 
-    // class MyViewHolder criada
+    // class MyViewHolder criada   --- PEsquisar sobre
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public MyViewHolder(@NonNull View itemView) {

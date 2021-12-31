@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
+import com.dfgstudio.listadetarefas.adapter.TarefaAdapter;
 import com.dfgstudio.listadetarefas.databinding.ActivityMainBinding;
 
 import android.view.Menu;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private RecyclerView recyclerView;
+    private TarefaAdapter tarefaAdapter;
 
 
     @Override
@@ -46,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void carregarListaTarefas(){
 
         //Lista de tarefas
 
 
         // Configurar adapter
-
+        tarefaAdapter = new TarefaAdapter();
 
         //Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
