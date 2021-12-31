@@ -10,14 +10,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 
 import com.dfgstudio.listadetarefas.adapter.TarefaAdapter;
 import com.dfgstudio.listadetarefas.databinding.ActivityMainBinding;
+import com.dfgstudio.listadetarefas.helper.RecyclerItemClickListener;
 import com.dfgstudio.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -43,6 +46,32 @@ public class MainActivity extends AppCompatActivity {
         // Configurar recycler
         recyclerView = findViewById(R.id.recyclerView);
         //Eventos de clique
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                //adicao
+                                Log.i("clique", "Clique curto");
+
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                //delecao
+                                Log.i("clique", "Clique longo");
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
 
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
