@@ -74,7 +74,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
-        //recyclerView.setAdapter();
+        recyclerView.setAdapter(tarefaAdapter);
+    }
+
+    //Utilizar o onStart para chamar o metodo carregarlista porque toda vez que voltar para tela carregara a lista.
+    @Override
+    protected void onStart() {
+        carregarListaTarefas();
+        super.onStart();
     }
 
     @Override
