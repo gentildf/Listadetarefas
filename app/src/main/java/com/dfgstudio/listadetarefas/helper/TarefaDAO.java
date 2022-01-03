@@ -62,7 +62,7 @@ public class TarefaDAO implements ITarefaDAO {
             Tarefa tarefa = new Tarefa();
 
             @SuppressLint("Range") Long id = c.getLong( c.getColumnIndex("id") );
-            @SuppressLint("Range") String nomeTarefa = c.getString( c.getColumnIndex("nomeTarefa") );
+            @SuppressLint("Range") String nomeTarefa = c.getString( c.getColumnIndex("nome") );
 
 
             tarefa.setId(id);
