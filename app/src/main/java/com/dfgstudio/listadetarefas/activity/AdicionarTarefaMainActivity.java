@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.dfgstudio.listadetarefas.R;
 import com.dfgstudio.listadetarefas.helper.TarefaDAO;
@@ -47,15 +48,26 @@ public class AdicionarTarefaMainActivity extends AppCompatActivity {
             case R.id.itemSalvar:
                 // Açao para salvar o item
                 TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
-                String nomeTarefa = editTarefa.getText().toString();
 
-                if( !nomeTarefa.isEmpty() ){
-                    Tarefa tarefa = new Tarefa();
-                    tarefa.setNomeTarefa(nomeTarefa);
-                    tarefaDAO.salvar(tarefa); // Recebe texto para salvar
-                    finish(); // Encerrar activity
+                if (tarefaAtual != null){ //edicao
+
+
+                } else { //salvar
+                    String nomeTarefa = editTarefa.getText().toString();
+                    if( !nomeTarefa.isEmpty() ){
+                        Tarefa tarefa = new Tarefa();
+                        tarefa.setNomeTarefa(nomeTarefa);
+                        if (tarefaDAO.salvar(tarefa)){
+                            finish(); // Encerrar activity
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Tarefa salva!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+
+                    }
                 }
-
                 break;
 
         }
