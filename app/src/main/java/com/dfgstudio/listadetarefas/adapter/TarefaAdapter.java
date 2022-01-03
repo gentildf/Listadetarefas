@@ -25,10 +25,9 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // inflar/instaciar layout
         View itemLista = LayoutInflater.from(parent.getContext())
-
-                .inflate(R.layout.lista_tarefa_adapter, parent, false);
-
+                        .inflate(R.layout.lista_tarefa_adapter, parent, false);
         return new MyViewHolder(itemLista);
     }
 

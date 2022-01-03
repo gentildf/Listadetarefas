@@ -1,5 +1,6 @@
 package com.dfgstudio.listadetarefas.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ import android.view.View;
 
 import com.dfgstudio.listadetarefas.adapter.TarefaAdapter;
 import com.dfgstudio.listadetarefas.databinding.ActivityMainBinding;
+import com.dfgstudio.listadetarefas.helper.DbHelper;
 import com.dfgstudio.listadetarefas.helper.RecyclerItemClickListener;
 import com.dfgstudio.listadetarefas.model.Tarefa;
 
@@ -43,9 +45,21 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        // Configurar recycler
+        // Instaciar recycler
         recyclerView = findViewById(R.id.recyclerView);
-        //Eventos de clique
+
+//        //Instanciar banco
+//        DbHelper db = new DbHelper(getApplicationContext());
+//
+//        ContentValues cv = new ContentValues(); // ContentValues permite definir itens como se fosse um array;
+//        cv.put("nome", "Teste");
+//
+//        db.getWritableDatabase().insert("tarefas", null, cv);
+
+
+        //Eventos de clique em um RecyclerView
+
+
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getApplicationContext(),
@@ -116,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_adicionar_tarefa, menu);
         return true;
     }
 
