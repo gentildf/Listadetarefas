@@ -51,6 +51,7 @@ public class TarefaDAO implements ITarefaDAO {
 
         }catch (Exception e){
             Log.e("INFO", "Erro ao atualizar tarefa" + e.getMessage());
+            return false;
         }
 
         return true;
@@ -58,7 +59,20 @@ public class TarefaDAO implements ITarefaDAO {
 
     @Override
     public boolean deletar(Tarefa tarefa) {
-        return false;
+
+
+        try{
+            String[] args ={tarefa.getId().toString()};
+            escreve.delete(DbHelper.TABELA_TAREFAS, "id=?", args);
+            Log.i("INFO", "Sucesso ao deletar tarefa" );
+
+        }catch (Exception e){
+            Log.e("INFO", "Erro ao deletar tarefa" + e.getMessage());
+            return false;
+        }
+
+
+        return true;
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.dfgstudio.listadetarefas.activity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.dfgstudio.listadetarefas.R;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,9 +83,36 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
+                                //Recuperando tarefa para edicao
+                                Tarefa tarefaSelecionada = listaTarefas.get(position);
                                 //delecao
-                                Log.i("clique", "Clique longo");
-
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir a tarefa: " + tarefaSelecionada.getNomeTarefa() + "?");
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+                                        if( tarefaDAO.deletar(tarefaSelecionada)){
+                                            carregarListaTarefas();
+                                            Toast.makeText(
+                                                    getApplicationContext(),
+                                                    "Tarefa excluida com sucesso!",
+                                                    Toast.LENGTH_SHORT
+                                            ).show();
+                                        }else{
+                                            Toast.makeText(
+                                                    getApplicationContext(),
+                                                    "Erro ao excluir tarefa.",
+                                                    Toast.LENGTH_SHORT
+                                            ).show();
+                                        }
+                                    }
+                                });
+                                dialog.setNegativeButton("Não", null);
+                                //Exibir a dialog
+                                dialog.create();
+                                dialog.show();
                             }
 
                             @Override
