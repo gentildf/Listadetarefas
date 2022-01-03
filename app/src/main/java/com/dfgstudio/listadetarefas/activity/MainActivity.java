@@ -69,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //adicao
-                                Log.i("clique", "Clique curto");
+                               //Recuperando tarefa para edicao
+                                Tarefa tarefaSelecionada = listaTarefas.get(position);
+                                // Enviar tarefa para tela adicionar tarefa
+                                Intent intent = new Intent(MainActivity.this, AdicionarTarefaMainActivity.class);
+                                intent.putExtra("tarefaSelecionada", tarefaSelecionada);
+                                startActivity(intent);
 
                             }
 

@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AdicionarTarefaMainActivity extends AppCompatActivity {
 
     private TextInputEditText editTarefa;
+    private Tarefa tarefaAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,13 @@ public class AdicionarTarefaMainActivity extends AppCompatActivity {
 
         editTarefa = findViewById(R.id.textTarefa);
 
+        //Recuperar tarefa para edicao
+        tarefaAtual = (Tarefa) getIntent().getSerializableExtra("tarefaSelecionada");
+
+        //Configurar tarefa na caixa de texto.
+        if(tarefaAtual != null){
+            editTarefa.setText(tarefaAtual.getNomeTarefa());
+        }
 
     }
 
