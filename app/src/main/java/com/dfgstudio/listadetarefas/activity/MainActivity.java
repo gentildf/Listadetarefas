@@ -18,6 +18,7 @@ import com.dfgstudio.listadetarefas.adapter.TarefaAdapter;
 import com.dfgstudio.listadetarefas.databinding.ActivityMainBinding;
 import com.dfgstudio.listadetarefas.helper.DbHelper;
 import com.dfgstudio.listadetarefas.helper.RecyclerItemClickListener;
+import com.dfgstudio.listadetarefas.helper.TarefaDAO;
 import com.dfgstudio.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
@@ -100,13 +101,17 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaTarefas(){
 
         //Lista de tarefas
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("Tarefa 1");
-        listaTarefas.add(tarefa1);
+        TarefaDAO tarefaDAO = new TarefaDAO( getApplicationContext() );
+        listaTarefas = tarefaDAO.listar();
 
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("Tarefa 2");
-        listaTarefas.add(tarefa2);
+
+//        Tarefa tarefa1 = new Tarefa();
+//        tarefa1.setNomeTarefa("Tarefa 1");
+//        listaTarefas.add(tarefa1);
+//
+//        Tarefa tarefa2 = new Tarefa();
+//        tarefa2.setNomeTarefa("Tarefa 2");
+//        listaTarefas.add(tarefa2);
 
 
         // Configurar adapter
