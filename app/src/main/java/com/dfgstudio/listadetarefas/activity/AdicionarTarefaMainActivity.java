@@ -48,12 +48,34 @@ public class AdicionarTarefaMainActivity extends AppCompatActivity {
             case R.id.itemSalvar:
                 // Açao para salvar o item
                 TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+                String nomeTarefa = editTarefa.getText().toString();
 
                 if (tarefaAtual != null){ //edicao
 
+                    if( !nomeTarefa.isEmpty() ){
+                        Tarefa tarefa = new Tarefa();
+                        tarefa.setNomeTarefa( nomeTarefa );
+                        tarefa.setId(tarefaAtual.getId());
+
+                        // atualizar banco
+                        if( tarefaDAO.atualizar(tarefa) ){
+                            finish(); // Encerrar activity
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Tarefa atualizada!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }else{
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Erro ao tentar atualizar tarefa!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+
+                    }
 
                 } else { //salvar
-                    String nomeTarefa = editTarefa.getText().toString();
                     if( !nomeTarefa.isEmpty() ){
                         Tarefa tarefa = new Tarefa();
                         tarefa.setNomeTarefa(nomeTarefa);
@@ -62,6 +84,12 @@ public class AdicionarTarefaMainActivity extends AppCompatActivity {
                             Toast.makeText(
                                     getApplicationContext(),
                                     "Tarefa salva!",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }else{
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Erro ao salvar tarefa!",
                                     Toast.LENGTH_SHORT
                             ).show();
                         }
