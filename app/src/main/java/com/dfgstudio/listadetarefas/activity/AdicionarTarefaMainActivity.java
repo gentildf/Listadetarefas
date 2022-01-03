@@ -8,13 +8,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dfgstudio.listadetarefas.R;
+import com.dfgstudio.listadetarefas.helper.TarefaDAO;
+import com.dfgstudio.listadetarefas.model.Tarefa;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class AdicionarTarefaMainActivity extends AppCompatActivity {
+
+    private TextInputEditText editTarefa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_tarefa_main);
+
+        editTarefa = findViewById(R.id.textTarefa);
+
+
     }
 
     @Override
@@ -28,6 +37,13 @@ public class AdicionarTarefaMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch ( item.getItemId() ){
             case R.id.itemSalvar:
+                // Açao para salvar o item
+                TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+
+                Tarefa tarefa = new Tarefa();
+                tarefa.setNomeTarefa("Ir ao mercado");
+
+                tarefaDAO.salvar(tarefa);
 
                 break;
 
